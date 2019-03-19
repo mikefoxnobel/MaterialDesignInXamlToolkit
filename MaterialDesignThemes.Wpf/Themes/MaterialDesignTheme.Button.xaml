@@ -53,11 +53,21 @@
                     <Grid>
                         <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(wpf:ShadowAssist.CacheMode)}">
                             <Grid>
-                                <Border Background="{TemplateBinding Background}" CornerRadius="2"
+                                <Border Background="{TemplateBinding Background}" 
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         BorderBrush="{TemplateBinding BorderBrush}"                                    
                                         x:Name="border"
-                                        Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(wpf:ShadowAssist.ShadowDepth), Converter={x:Static converters:ShadowConverter.Instance}}" />
+                                        Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(wpf:ShadowAssist.ShadowDepth), Converter={x:Static converters:ShadowConverter.Instance}}">
+                                    <Border.CornerRadius>
+                                        <MultiBinding Converter="{x:Static converters:RoundCornerRadiusConverter.Instance}">
+                                            <MultiBinding.Bindings>
+                                                <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(wpf:RoundCornerAssist.CornerRadius)" Mode="OneWay" />
+                                                <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ButtonBase}}" Path="ActualHeight" Mode="OneWay" />
+                                                <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ButtonBase}}" Path="ActualWidth" Mode="OneWay" />
+                                            </MultiBinding.Bindings>
+                                        </MultiBinding>
+                                    </Border.CornerRadius>
+                                </Border>
                                 <ProgressBar x:Name="ProgressBar" 
                                              Style="{DynamicResource MaterialDesignLinearProgressBar}" 
                                              Minimum="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(wpf:ButtonProgressAssist.Minimum)}"

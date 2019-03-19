@@ -299,6 +299,8 @@
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Converters\NotZeroToVisibilityConverter.cs" />
     <Compile Include="Converters\PointValueConverter.cs" />
+    <Compile Include="Converters\RoundCornerRadiusConverter.cs" />
+    <Compile Include="RoundCornerAssist.cs" />
     <Compile Include="Converters\ShadowConverter.cs" />
     <Compile Include="Converters\ShadowEdgeConverter.cs" />
     <Compile Include="Converters\ShadowInfo.cs" />
